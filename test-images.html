@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-card {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        img {
+            max-width: 300px;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Test de Chargement des Images</h1>
+    
+    <div class="test-card">
+        <h2>Photos de Souvenirs (Memory)</h2>
+        <img src="./images/memory1.jpg" alt="Memory 1" onload="showSuccess(this)" onerror="showError(this, 'memory1.jpg')">
+        <img src="./images/memory2.jpg" alt="Memory 2" onload="showSuccess(this)" onerror="showError(this, 'memory2.jpg')">
+        <img src="./images/memory3.jpg" alt="Memory 3" onload="showSuccess(this)" onerror="showError(this, 'memory3.jpg')">
+        <img src="./images/memory4.jpg" alt="Memory 4" onload="showSuccess(this)" onerror="showError(this, 'memory4.jpg')">
+    </div>
+
+    <div class="test-card">
+        <h2>Photos de Galerie</h2>
+        <img src="./images/gallery1.jpg" alt="Gallery 1" onload="showSuccess(this)" onerror="showError(this, 'gallery1.jpg')">
+        <img src="./images/gallery2.jpg" alt="Gallery 2" onload="showSuccess(this)" onerror="showError(this, 'gallery2.jpg')">
+        <img src="./images/gallery3.jpg" alt="Gallery 3" onload="showSuccess(this)" onerror="showError(this, 'gallery3.jpg')">
+        <img src="./images/gallery4.jpg" alt="Gallery 4" onload="showSuccess(this)" onerror="showError(this, 'gallery4.jpg')">
+        <img src="./images/gallery5.jpg" alt="Gallery 5" onload="showSuccess(this)" onerror="showError(this, 'gallery5.jpg')">
+        <img src="./images/gallery6.jpg" alt="Gallery 6" onload="showSuccess(this)" onerror="showError(this, 'gallery6.jpg')">
+    </div>
+
+    <div class="test-card">
+        <h2>Photo Principale</h2>
+        <img src="./images/photo1.jpg" alt="Photo 1" onload="showSuccess(this)" onerror="showError(this, 'photo1.jpg')">
+    </div>
+
+    <script>
+        function showSuccess(img) {
+            const message = document.createElement('p');
+            message.className = 'success';
+            message.textContent = '✓ ' + img.alt + ' chargée avec succès !';
+            img.parentNode.insertBefore(message, img.nextSibling);
+        }
+
+        function showError(img, filename) {
+            const message = document.createElement('p');
+            message.className = 'error';
+            message.textContent = '✗ Erreur: ' + filename + ' non trouvée !';
+            img.parentNode.insertBefore(message, img.nextSibling);
+            
+            // Remplacer par un placeholder
+            img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="200"%3E%3Crect width="300" height="200" fill="%23ddd"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" dy=".3em" fill="%23999" font-size="20"%3E❌ Image manquante%3C/text%3E%3C/svg%3E';
+        }
+    </script>
+</body>
+</html>
